@@ -1,0 +1,20 @@
+//= require jquery/dist/jquery
+//= require angular/angular
+//= require angular-route/angular-route
+//= require angular-sanitize/angular-sanitize
+//= require angular-resource/angular-resource
+//= require angulartics/src/angulartics
+//= require angulartics/src/angulartics-ga
+//= require angular-bootstrap/ui-bootstrap
+//= require angular-bootstrap/ui-bootstrap-tpls
+//= require blog/app
+//= require blog/common/AppController
+//= require blog/common/AppService
+//= require blog/common/AppDirectives
+//= require blog/pages/PageController
+//= require blog/pages/PageService
+//= require blog/posts/PostController
+//= require blog/posts/PostService
+//= require_tree views
+//= require_self
+console.log("gamb blog manifest load complete.");

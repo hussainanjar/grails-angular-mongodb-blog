@@ -1,0 +1,29 @@
+
+<article class="post-list" ng-repeat='post in posts | orderBy:orderProp'>
+    <header class="post-list-header">
+        <h2><a href="#/posts/{{post.slug}}">{{post.title}}</a></h2>
+        <figure class="post-list-meta">
+            <time class="post-meta-post-date">{{post.dateCreated | date:'longDate'}}</time>
+            <span class="post-meta-post-author">{{post.author}}</span>
+            <span class="post-meta-post-comment-count">{{post.commentsCount}}</span>
+        </figure>
+    </header>
+    <div class="post-list-content">
+        <div ng-bind-html="post.content"></div>
+    </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <span ng-repeat="tag in post.tags">
+                <a href="#/posts/tags/{{tag}}">
+                    <span class="label label-info" >
+                        {{tag}}
+                    </span>
+                </a>
+            </span>
+        </div>
+    </footer>
+</article>
+
+<nav class="posts-pagination">
+
+</nav>

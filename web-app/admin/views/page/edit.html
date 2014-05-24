@@ -1,0 +1,66 @@
+<div class="page-header">
+    <h1>Edit Page</h1>
+</div>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Edit</div>
+    <div class="form-admin">
+        <div class="alert alert-danger" ng-show="page.errors">
+            <h4 class="alert-heading">
+                Please fix the following errors:
+            </h4>
+            <ul>
+                <li ng-repeat="error in page.errors">{{error.message}}</li>
+            </ul>
+
+        </div>
+        <form class="form-horizontal" role="form" method="post" ng-submit="updatePage()">
+            <input type="hidden" name="id" ng-model="page.id" />
+            <div class="form-group">
+                <label for="title" class="col-lg-2 control-label">Title</label>
+                <div class="col-lg-6">
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Title" ng-model="page.title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="slug" class="col-lg-2 control-label">Slug</label>
+                <div class="col-lg-6">
+                    <slug from="page.title" to="page.slug">
+                        <input type="text" name="slug" class="form-control" id="slug" placeholder="Slug" ng-model="page.slug">
+                    </slug>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="content" class="col-lg-2 control-label">Content</label>
+                <div class="col-lg-10">
+
+                    <textarea id="content" ck-editor ng-model="page.content"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sortOrder" class="col-lg-2 control-label">Sort Order</label>
+                <div class="col-lg-1">
+                    <input type="number" name="sortOrder" class="form-control" id="sortOrder" placeholder="Sort Order" ng-model="page.sortOrder">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="includeInMenu" class="col-lg-2 control-label">Include In Menu</label>
+                <div class="col-lg-2">
+                    <input type="checkbox" name="includeInMenu" id="includeInMenu" value="true" ng-model="page.includeInMenu" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="active" class="col-lg-2 control-label">Active</label>
+                <div class="col-lg-2">
+                    <input type="checkbox" name="active" id="active" value="true" ng-model="page.active" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button type="submit" data-loading-text="Saving..." class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

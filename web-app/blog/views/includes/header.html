@@ -1,0 +1,17 @@
+<!-- Static navbar -->
+<div class="header" data-ng-controller="AppController">
+    <nav role="navigation" class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/posts">{{settings.blogTitle}}</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse navbar-ex5-collapse collapse" style="height: 1px;">
+            <ul class="nav navbar-nav pull-right pills">
+                <li when-active><a href="#/posts">Home</a></li>
+                <li data-ng-repeat="m in menu" when-active><a href="#/{{m.slug}}">{{m.title}}</a> </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</div>

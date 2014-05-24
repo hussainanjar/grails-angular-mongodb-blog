@@ -1,0 +1,61 @@
+
+<article class="post-list">
+    <header class="post-list-header">
+        <h2>{{post.title}}</h2>
+        <figure class="post-list-meta">
+            <time class="post-meta-post-date">{{post.dateCreated | date:'longDate'}}</time>
+            <span class="post-meta-post-author">{{post.author}}</span>
+            <span class="post-meta-post-comment-count">{{post.commentsCount}}</span>
+        </figure>
+    </header>
+    <div class="post-list-content">
+        <div ng-bind-html="post.content"></div>
+    </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <span ng-repeat="tag in post.tags">
+                <a href="#/posts/tags/{{tag}}">
+                    <span class="label label-info" >
+                        {{tag}}
+                    </span>
+                </a>
+            </span>
+        </div>
+        <section class="post-comments">
+            <div class="comments-title">
+                <h4 ng-show="post.comments">{{post.commentsCount}} Responses</h4>
+            </div>
+                <div ng-repeat="comment in post.comments">
+                    <div class="comment-author vcard">
+                        <img width="40" height="40" class="avatar avatar-40 grav-hashed grav-hijack" src="http://www.gravatar.com/avatar/{{comment.md5Hash}}?s=40&amp;d=mm&amp;r=G" alt="">
+                        <cite class="fn"><a class="url" rel="external nofollow" href="{{comment.website}}">{{comment.name}}</a></cite> <span class="says">says:</span>
+                    </div>
+                    <div class="comment-meta commentmetadata">
+                        {{comment.dateCreated | date:'longDate'}}
+                    </div>
+                    <div class="comment-body">
+                        <p>{{comment.content}}</p>
+                    </div>
+                </div>
+        </section>
+        <section class="post-comment-form">
+            <h3>Leave a reply</h3>
+            <form name="add-comment" ng-submit="addComment()">
+                <input type="hidden" name="slug" class="form-control" id="slug" ng-model="comment.slug" >
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" id="name" ng-model="comment.name" required="required" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" id="email" ng-model="comment.email" required="required" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="url" name="website" class="form-control" id="website" ng-model="comment.website" placeholder="Website">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" name="content" id="content" ng-model="comment.content" required="required" placeholder="What do you have to say?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Post this comment</button>
+            </form>
+        </section>
+    </footer>
+</article>
