@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Angular Blog</title>
+    <title>Blog using Grails, AngularJS and MongoDB</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <asset:link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
