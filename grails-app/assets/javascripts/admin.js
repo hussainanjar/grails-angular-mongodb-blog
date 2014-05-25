@@ -8,6 +8,7 @@
 //= require angular-http-auth/src/http-auth-interceptor
 //= require angular-bootstrap/ui-bootstrap
 //= require angular-bootstrap/ui-bootstrap-tpls
+//= require bootstrap/js/collapse
 //= require ckeditor/ckeditor
 //= require admin/app
 //= require admin/settings/SettingsController
