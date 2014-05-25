@@ -7,9 +7,9 @@ appDirectives.directive('ckEditor', function () {
         link: function ($scope, elm, attr, ngModel) {
 
             var ck = CKEDITOR.replace(elm[0], {
-                    height: '360px',
-                    width: '80%'}
-            );
+                height: '360px',
+                width: '80%'
+            });
 
             ck.on('instanceReady', function () {
                 ck.setData(ngModel.$viewValue);

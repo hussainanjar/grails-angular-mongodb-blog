@@ -145,3 +145,6 @@ grails.plugin.springsecurity.rest.token.storage.useGorm = true
 grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = 'com.grails.blog.auth.AuthenticationToken'
 grails.plugin.springsecurity.rest.token.storage.gorm.tokenValuePropertyName = 'token'
 grails.plugin.springsecurity.rest.token.storage.gorm.usernamePropertyName = 'username'
+
+// Excluding ckeditor as it has issues when compressed with asset pipeline
+grails.assets.excludes = ["ckeditor/*.js"]

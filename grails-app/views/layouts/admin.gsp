@@ -14,6 +14,7 @@
     <asset:stylesheet href="font-awesome/css/font-awesome.css" />
     <asset:stylesheet href="bootstrap-css/css/bootstrap.css" />
     <asset:stylesheet href="admin/main.css" />
+    <asset:javascript src="ckeditor/ckeditor.js"/>
     <asset:javascript src="admin.js"/>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -9,7 +9,6 @@
 //= require angular-bootstrap/ui-bootstrap
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require bootstrap/js/collapse
-//= require ckeditor/ckeditor
 //= require admin/app
 //= require admin/settings/SettingsController
 //= require admin/settings/SettingsService
