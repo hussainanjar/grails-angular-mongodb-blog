@@ -37,5 +37,6 @@
     <g:layoutBody/>
     <div ng-include="'blog/views/includes/footer.html'"></div>
 </div>
+<a href="https://github.com/hussainanjar/grails-angular-mongodb-blog"><img style="position: absolute; top: 0; left: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
 </body>
 </html>
