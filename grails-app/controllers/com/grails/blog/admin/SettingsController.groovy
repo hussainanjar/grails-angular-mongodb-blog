@@ -26,7 +26,9 @@ class SettingsController {
             return
         }
 
-        settings.save()
+        if (grailsApplication.config.blog.updates.enabled) {
+            settings.save()
+        }
 
         respond settings, [status: OK]
     }

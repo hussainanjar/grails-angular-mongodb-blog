@@ -26,61 +26,6 @@ class PostController {
         respond postInstance
     }
 
-    def create() {
-        respond new Post(params)
-    }
-
-    @Transactional
-    def save(Post postInstance) {
-        if (postInstance == null) {
-            notFound()
-            return
-        }
-
-        if (postInstance.hasErrors()) {
-            respond postInstance.errors, view:'create'
-            return
-        }
-
-        postInstance.save flush:true
-
-        respond postInstance, [status: CREATED]
-    }
-
-    def edit(Post postInstance) {
-        respond postInstance
-    }
-
-    @Transactional
-    def update(Post postInstance) {
-        if (postInstance == null) {
-            notFound()
-            return
-        }
-
-        if (postInstance.hasErrors()) {
-            respond postInstance.errors, view:'edit'
-            return
-        }
-
-        postInstance.save flush:true
-
-        respond postInstance, [status: OK]
-    }
-
-    @Transactional
-    def delete(Post postInstance) {
-
-        if (postInstance == null) {
-            notFound()
-            return
-        }
-
-        postInstance.delete flush:true
-
-        render status: NO_CONTENT
-    }
-
     @Transactional
     def comments(Comment comment) {
         String postId = params.postId

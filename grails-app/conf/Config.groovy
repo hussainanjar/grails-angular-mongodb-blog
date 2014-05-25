@@ -148,3 +148,6 @@ grails.plugin.springsecurity.rest.token.storage.gorm.usernamePropertyName = 'use
 
 // Excluding ckeditor as it has issues when compressed with asset pipeline
 grails.assets.excludes = ["ckeditor/*.js"]
+
+//Enable disable updates for HEROKU
+blog.updates.enabled = false

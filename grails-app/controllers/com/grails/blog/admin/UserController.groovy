@@ -36,7 +36,9 @@ class UserController {
             return
         }
 
-        userInstance.save flush:true
+        if (grailsApplication.config.blog.updates.enabled) {
+            userInstance.save flush:true
+        }
 
         respond userInstance, [status: OK, excludes: ['class','password']]
     }
@@ -52,7 +54,9 @@ class UserController {
         if (currentUser.password.equals(springSecurityService.encodePassword(password.currentPassword))) {
             if (password.newPassword.equals(password.confirmPassword)) {
                 currentUser.password = password.newPassword
-                currentUser.save()
+                if (grailsApplication.config.blog.updates.enabled) {
+                    currentUser.save()
+                }
                 render status: OK
             } else {
                 password.errors.reject(
@@ -77,7 +81,9 @@ class UserController {
             return
         }
 
-        currentUser.save flush:true
+        if (grailsApplication.config.blog.updates.enabled) {
+            currentUser.save flush:true
+        }
 
         respond currentUser, [status: OK]
     }

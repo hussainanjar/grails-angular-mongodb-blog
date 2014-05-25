@@ -28,10 +28,6 @@ class PostController {
         respond postInstance, [excludes: ['class']]
     }
 
-    def create() {
-        respond new Post(params)
-    }
-
     @Transactional
     def save(Post postInstance) {
         if (postInstance == null) {
@@ -51,10 +47,6 @@ class PostController {
         respond postInstance, [status: CREATED]
     }
 
-    def edit(Post postInstance) {
-        respond postInstance
-    }
-
     @Transactional
     def update(Post postInstance) {
         if (postInstance == null) {
@@ -62,14 +54,14 @@ class PostController {
             return
         }
 
-
-
         if (postInstance.hasErrors()) {
             respond postInstance.errors, view:'edit'
             return
         }
 
-        postInstance.save flush:true
+        if (grailsApplication.config.blog.updates.enabled) {
+            postInstance.save flush:true
+        }
 
         respond postInstance, [status: OK]
     }
@@ -81,37 +73,11 @@ class PostController {
             return
         }
 
-        postInstance.delete flush:true
+        if (grailsApplication.config.blog.updates.enabled) {
+            postInstance.delete flush:true
+        }
 
         render status: NO_CONTENT
-    }
-
-    @Transactional
-    def comments(Comment comment) {
-        String postId = params.postId
-        Post postInstance = Post.findBySlug(postId)
-        if (postInstance == null) {
-            notFound()
-            return
-        }
-
-        if (postInstance.hasErrors()) {
-            respond postInstance.errors, view:'create'
-            return
-        }
-
-        comment.dateCreated = new Date()
-        postInstance.commentsCount = (postInstance.commentsCount?:0) + 1
-        postInstance.comments.add(comment)
-        postInstance.save flush: true
-        log.debug("Comment ${postInstance.commentsCount} add for post ${postId}")
-
-        respond comment, [status: CREATED]
-    }
-
-    def tags(String tag) {
-        def posts = Post.collection.find(tags: tag, active: true).collect { it as Post}
-        respond posts
     }
 
     protected void notFound() {

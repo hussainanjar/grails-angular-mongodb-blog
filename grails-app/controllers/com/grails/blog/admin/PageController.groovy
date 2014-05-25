@@ -21,10 +21,6 @@ class PageController {
         respond pageInstance, [excludes: ['class']]
     }
 
-    def create() {
-        respond new Page(params)
-    }
-
     @Transactional
     def save(Page pageInstance) {
         if (pageInstance == null) {
@@ -42,10 +38,6 @@ class PageController {
         respond pageInstance, [status: CREATED]
     }
 
-    def edit(Page pageInstance) {
-        respond pageInstance
-    }
-
     @Transactional
     def update(Page pageInstance) {
         if (pageInstance == null) {
@@ -58,7 +50,9 @@ class PageController {
             return
         }
 
-        pageInstance.save flush:true
+        if (grailsApplication.config.blog.updates.enabled) {
+            pageInstance.save flush:true
+        }
 
         respond pageInstance, [status: OK]
     }
@@ -71,7 +65,9 @@ class PageController {
             return
         }
 
-        pageInstance.delete flush:true
+        if (grailsApplication.config.blog.updates.enabled) {
+            pageInstance.delete flush:true
+        }
 
         render status: NO_CONTENT
     }
